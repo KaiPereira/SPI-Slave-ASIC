@@ -1,0 +1,234 @@
+Info: constrained 'clk' to bel 'X19/Y0/io1'
+Info: constrained 'rst_n' to bel 'X13/Y31/io0'
+Info: constrained 'ui_in[0]' to bel 'X19/Y0/io0'
+Info: constrained 'ui_in[1]' to bel 'X21/Y0/io1'
+Info: constrained 'ui_in[2]' to bel 'X22/Y0/io1'
+Info: constrained 'ui_in[3]' to bel 'X18/Y0/io1'
+Info: constrained 'ui_in[4]' to bel 'X19/Y31/io0'
+Info: constrained 'ui_in[5]' to bel 'X19/Y31/io1'
+Info: constrained 'ui_in[6]' to bel 'X18/Y31/io0'
+Info: constrained 'ui_in[7]' to bel 'X18/Y31/io1'
+Info: constrained 'uio[0]' to bel 'X8/Y0/io0'
+Info: constrained 'uio[1]' to bel 'X9/Y0/io0'
+Info: constrained 'uio[2]' to bel 'X9/Y0/io1'
+Info: constrained 'uio[3]' to bel 'X13/Y0/io1'
+Info: constrained 'uio[4]' to bel 'X15/Y0/io0'
+Info: constrained 'uio[5]' to bel 'X16/Y0/io0'
+Info: constrained 'uio[6]' to bel 'X17/Y0/io0'
+Info: constrained 'uio[7]' to bel 'X18/Y0/io0'
+Info: constrained 'uo_out[0]' to bel 'X8/Y31/io1'
+Info: constrained 'uo_out[1]' to bel 'X8/Y31/io0'
+Info: constrained 'uo_out[2]' to bel 'X9/Y31/io0'
+Info: constrained 'uo_out[3]' to bel 'X6/Y0/io1'
+Info: constrained 'uo_out[4]' to bel 'X7/Y0/io1'
+Info: constrained 'uo_out[5]' to bel 'X5/Y0/io0'
+Info: constrained 'uo_out[6]' to bel 'X6/Y0/io0'
+Info: constrained 'uo_out[7]' to bel 'X7/Y0/io0'
+
+Info: Packing constants..
+Info: Packing IOs..
+Info: uio[2] feeds SB_IO uio_pin[2], removing $nextpnr_iobuf uio[2].
+Info: uio[1] feeds SB_IO uio_pin[1], removing $nextpnr_iobuf uio[1].
+Info: uio[0] feeds SB_IO uio_pin[0], removing $nextpnr_iobuf uio[0].
+Info: uio[7] feeds SB_IO uio_pin[7], removing $nextpnr_iobuf uio[7].
+Info: uio[6] feeds SB_IO uio_pin[6], removing $nextpnr_iobuf uio[6].
+Info: uio[5] feeds SB_IO uio_pin[5], removing $nextpnr_iobuf uio[5].
+Info: uio[4] feeds SB_IO uio_pin[4], removing $nextpnr_iobuf uio[4].
+Info: uio[3] feeds SB_IO uio_pin[3], removing $nextpnr_iobuf uio[3].
+Info: Packing LUT-FFs..
+Info:        5 LCs used as LUT4 only
+Info:       19 LCs used as LUT4 and DFF
+Info: Packing non-LUT FFs..
+Info:        7 LCs used as DFF only
+Info: Packing carries..
+Info:        0 LCs used as CARRY only
+Info: Packing indirect carry+LUT pairs...
+Info:        0 LUTs merged into carry LCs
+Info: Packing RAMs..
+Info: Placing PLLs..
+Info: Packing special functions..
+Info: Packing PLLs..
+Info: Promoting globals..
+Info: promoting clk$SB_IO_IN (fanout 26)
+Info: Constraining chains...
+Info:        1 LCs used to legalise carry chains.
+Info: Checksum: 0x955f5883
+
+Info: Device utilisation:
+Info: 	         ICESTORM_LC:      34/   5280     0%
+Info: 	        ICESTORM_RAM:       0/     30     0%
+Info: 	               SB_IO:      26/     39    66%
+Info: 	               SB_GB:       1/      8    12%
+Info: 	        ICESTORM_PLL:       0/      1     0%
+Info: 	         SB_WARMBOOT:       0/      1     0%
+Info: 	        ICESTORM_DSP:       0/      8     0%
+Info: 	      ICESTORM_HFOSC:       0/      1     0%
+Info: 	      ICESTORM_LFOSC:       0/      1     0%
+Info: 	              SB_I2C:       0/      2     0%
+Info: 	              SB_SPI:       0/      2     0%
+Info: 	              IO_I3C:       0/      2     0%
+Info: 	         SB_LEDDA_IP:       0/      1     0%
+Info: 	         SB_RGBA_DRV:       0/      1     0%
+Info: 	      ICESTORM_SPRAM:       0/      4     0%
+
+Info: Placed 26 cells based on constraints.
+Info: Creating initial analytic placement for 33 cells, random placement wirelen = 931.
+Info:     at initial placer iter 0, wirelen = 102
+Info:     at initial placer iter 1, wirelen = 101
+Info:     at initial placer iter 2, wirelen = 101
+Info:     at initial placer iter 3, wirelen = 101
+Info: Running main analytical placer, max placement attempts per cell = 10000.
+Info:     at iteration #1, type ICESTORM_LC: wirelen solved = 101, spread = 160, legal = 173; time = 0.00s
+Info:     at iteration #1, type SB_GB: wirelen solved = 173, spread = 173, legal = 173; time = 0.00s
+Info:     at iteration #1, type ALL: wirelen solved = 101, spread = 160, legal = 174; time = 0.00s
+Info:     at iteration #2, type ICESTORM_LC: wirelen solved = 101, spread = 166, legal = 186; time = 0.00s
+Info:     at iteration #2, type SB_GB: wirelen solved = 186, spread = 186, legal = 186; time = 0.00s
+Info:     at iteration #2, type ALL: wirelen solved = 101, spread = 166, legal = 180; time = 0.00s
+Info:     at iteration #3, type ICESTORM_LC: wirelen solved = 102, spread = 139, legal = 190; time = 0.00s
+Info:     at iteration #3, type SB_GB: wirelen solved = 190, spread = 190, legal = 190; time = 0.00s
+Info:     at iteration #3, type ALL: wirelen solved = 102, spread = 137, legal = 189; time = 0.00s
+Info:     at iteration #4, type ICESTORM_LC: wirelen solved = 102, spread = 136, legal = 157; time = 0.00s
+Info:     at iteration #4, type SB_GB: wirelen solved = 157, spread = 157, legal = 157; time = 0.00s
+Info:     at iteration #4, type ALL: wirelen solved = 104, spread = 136, legal = 173; time = 0.00s
+Info:     at iteration #5, type ICESTORM_LC: wirelen solved = 102, spread = 141, legal = 166; time = 0.00s
+Info:     at iteration #5, type SB_GB: wirelen solved = 166, spread = 166, legal = 166; time = 0.00s
+Info:     at iteration #5, type ALL: wirelen solved = 102, spread = 137, legal = 148; time = 0.00s
+Info:     at iteration #6, type ICESTORM_LC: wirelen solved = 104, spread = 138, legal = 181; time = 0.00s
+Info:     at iteration #6, type SB_GB: wirelen solved = 181, spread = 181, legal = 181; time = 0.00s
+Info:     at iteration #6, type ALL: wirelen solved = 105, spread = 167, legal = 180; time = 0.00s
+Info:     at iteration #7, type ICESTORM_LC: wirelen solved = 107, spread = 180, legal = 188; time = 0.00s
+Info:     at iteration #7, type SB_GB: wirelen solved = 188, spread = 188, legal = 188; time = 0.00s
+Info:     at iteration #7, type ALL: wirelen solved = 107, spread = 180, legal = 189; time = 0.00s
+Info:     at iteration #8, type ICESTORM_LC: wirelen solved = 108, spread = 180, legal = 183; time = 0.00s
+Info:     at iteration #8, type SB_GB: wirelen solved = 183, spread = 183, legal = 183; time = 0.00s
+Info:     at iteration #8, type ALL: wirelen solved = 109, spread = 156, legal = 178; time = 0.00s
+Info:     at iteration #9, type ICESTORM_LC: wirelen solved = 109, spread = 150, legal = 162; time = 0.00s
+Info:     at iteration #9, type SB_GB: wirelen solved = 162, spread = 162, legal = 162; time = 0.00s
+Info:     at iteration #9, type ALL: wirelen solved = 109, spread = 171, legal = 170; time = 0.00s
+Info:     at iteration #10, type ICESTORM_LC: wirelen solved = 118, spread = 169, legal = 176; time = 0.00s
+Info:     at iteration #10, type SB_GB: wirelen solved = 176, spread = 176, legal = 176; time = 0.00s
+Info:     at iteration #10, type ALL: wirelen solved = 118, spread = 169, legal = 175; time = 0.00s
+Info: HeAP Placer Time: 0.04s
+Info:   of which solving equations: 0.02s
+Info:   of which spreading cells: 0.00s
+Info:   of which strict legalisation: 0.00s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 36, wirelen = 148
+Info:   at iteration #2: temp = 0.000000, timing cost = 51, wirelen = 150 
+Info: SA placement time 0.00s
+
+Info: Max frequency for clock 'clk$SB_IO_IN_$glb_clk': 112.21 MHz (PASS at 12.00 MHz)
+
+Info: Max delay <async>                       -> posedge clk$SB_IO_IN_$glb_clk: 10.45 ns
+Info: Max delay posedge clk$SB_IO_IN_$glb_clk -> <async>                      : 4.04 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 1 endpoint(s)
+Info:          + represents [1,1) endpoint(s)
+Info: [ 74421,  74662) |************* 
+Info: [ 74662,  74903) |****** 
+Info: [ 74903,  75144) | 
+Info: [ 75144,  75385) | 
+Info: [ 75385,  75626) | 
+Info: [ 75626,  75867) | 
+Info: [ 75867,  76108) |****** 
+Info: [ 76108,  76349) |*********** 
+Info: [ 76349,  76590) |***** 
+Info: [ 76590,  76831) |***** 
+Info: [ 76831,  77072) | 
+Info: [ 77072,  77313) | 
+Info: [ 77313,  77554) | 
+Info: [ 77554,  77795) | 
+Info: [ 77795,  78036) |**** 
+Info: [ 78036,  78277) |* 
+Info: [ 78277,  78518) |* 
+Info: [ 78518,  78759) |* 
+Info: [ 78759,  79000) |************* 
+Info: [ 79000,  79241) |************ 
+Info: Checksum: 0x03fe68f2
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 133 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:        133 |        0        132 |    0   132 |         0|       0.19       0.19|
+Info: Routing complete.
+Info: Router1 time 0.19s
+Info: Checksum: 0x7d8a3fc1
+
+Info: Critical path report for clock 'clk$SB_IO_IN_$glb_clk' (posedge -> posedge):
+Info:       type curr  total name
+Info:   clk-to-q  1.39  1.39 Source user_project.cs_reg_SB_DFFS_D_DFFLC.O
+Info:    routing  1.76  3.15 Net user_project.cs_reg_SB_DFFS_D_Q[1] (8,2) -> (9,1)
+Info:                          Sink user_project.reset_SB_LUT4_I2_LC.I3
+Info:                          Defined in:
+Info:                               /home/kai/other-applications/oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.87  4.03 Source user_project.reset_SB_LUT4_I2_LC.O
+Info:    routing  1.76  5.79 Net user_project.mosi_reg_SB_DFFR_D_Q[1] (9,1) -> (9,2)
+Info:                          Sink user_project.sclk_reg_SB_DFFR_D_Q_SB_LUT4_I2_1_LC.I3
+Info:                          Defined in:
+Info:                               /home/kai/other-applications/oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.87  6.66 Source user_project.sclk_reg_SB_DFFR_D_Q_SB_LUT4_I2_1_LC.O
+Info:    routing  3.53  10.19 Net user_project.sclk_reg_SB_DFFR_D_Q_SB_LUT4_I2_1_O (9,2) -> (8,1)
+Info:                          Sink user_project.reset_SB_LUT4_I2_O_SB_DFFER_Q_D_SB_LUT4_O_2_LC.CEN
+Info:                          Defined in:
+Info:                               /home/kai/projects/asics/working/spi-slave/src/tt_um_kaipereira_spi_slave.v:68.3-99.6
+Info:                               /home/kai/other-applications/oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:14.63-14.116
+Info:                               /home/kai/other-applications/oss-cad-suite/lib/../share/yosys/ice40/cells_sim.v:656.8-656.9
+Info:      setup  0.10  10.29 Source user_project.reset_SB_LUT4_I2_O_SB_DFFER_Q_D_SB_LUT4_O_2_LC.CEN
+Info: 3.24 ns logic, 7.06 ns routing
+
+Info: Critical path report for cross-domain path '<async>' -> 'posedge clk$SB_IO_IN_$glb_clk':
+Info:       type curr  total name
+Info:     source  0.00  0.00 Source rst_n$sb_io.D_IN_0
+Info:    routing  2.99  2.99 Net rst_n$SB_IO_IN (13,31) -> (13,23)
+Info:                          Sink rst_n_SB_LUT4_I3_LC.I3
+Info:                          Defined in:
+Info:                               /home/kai/projects/asics/working/spi-slave/src/tt_um_kaipereira_spi_slave.v:16.23-16.28
+Info:      logic  0.87  3.87 Source rst_n_SB_LUT4_I3_LC.O
+Info:    routing  7.36  11.22 Net rst_n_SB_LUT4_I3_O (13,23) -> (7,1)
+Info:                          Sink user_project.mosi_reg_SB_DFFR_Q_DFFLC.SR
+Info:      setup  0.10  11.32 Source user_project.mosi_reg_SB_DFFR_Q_DFFLC.SR
+Info: 0.97 ns logic, 10.35 ns routing
+
+Info: Critical path report for cross-domain path 'posedge clk$SB_IO_IN_$glb_clk' -> '<async>':
+Info:       type curr  total name
+Info:   clk-to-q  1.39  1.39 Source user_project.mosi_reg_SB_DFFR_D_Q_SB_LUT4_I2_O_SB_LUT4_O_4_I2_SB_LUT4_I1_O_SB_LUT4_O_LC.O
+Info:    routing  2.41  3.80 Net uio_out[2] (9,2) -> (9,0)
+Info:                          Sink uio_pin[2].D_OUT_0
+Info:                          Defined in:
+Info:                               /home/kai/projects/asics/working/spi-slave/src/tt_um_kaipereira_spi_slave.v:12.23-12.30
+Info: 1.39 ns logic, 2.41 ns routing
+
+Info: Max frequency for clock 'clk$SB_IO_IN_$glb_clk': 97.14 MHz (PASS at 12.00 MHz)
+
+Info: Max delay <async>                       -> posedge clk$SB_IO_IN_$glb_clk: 11.32 ns
+Info: Max delay posedge clk$SB_IO_IN_$glb_clk -> <async>                      : 3.80 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 1 endpoint(s)
+Info:          + represents [1,1) endpoint(s)
+Info: [ 73039,  73339) |***** 
+Info: [ 73339,  73639) |****** 
+Info: [ 73639,  73939) | 
+Info: [ 73939,  74239) | 
+Info: [ 74239,  74539) | 
+Info: [ 74539,  74839) |******** 
+Info: [ 74839,  75139) | 
+Info: [ 75139,  75439) | 
+Info: [ 75439,  75739) | 
+Info: [ 75739,  76039) | 
+Info: [ 76039,  76339) |** 
+Info: [ 76339,  76639) |**************** 
+Info: [ 76639,  76939) |********* 
+Info: [ 76939,  77239) | 
+Info: [ 77239,  77539) | 
+Info: [ 77539,  77839) |*** 
+Info: [ 77839,  78139) |* 
+Info: [ 78139,  78439) |* 
+Info: [ 78439,  78739) |** 
+Info: [ 78739,  79039) |************************* 
+
+Info: Program finished normally.
