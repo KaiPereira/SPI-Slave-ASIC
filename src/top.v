@@ -1,11 +1,27 @@
-module icepi_top (
+// 50 MHz 
+
+module top (
     input wire clk,
     input wire [1:0] button,
     input wire pi_mosi,
     input wire pi_miso,
     input wire pi_sclk,
-    input wire pi_ce0
+    input wire pi_ce0,
+    input wire [4:0] led
 );
+
+    // Little LED clock to confirm the design is working
+    wire [24:0] clk_count;
+
+    initial begin
+        clk_count = 0;
+    end
+
+    always @(posedge clk) clk_count <= clk_count + 1'b1;
+
+    always @(posedge clk_count[24]) led <= led + 1'b1;
+
+
     wire [7:0] uio_in;
     wire [7:0] uio_out;
 
@@ -19,13 +35,13 @@ module icepi_top (
     assign uio_in[7] = 1'b0;
 
     tt_um_kaipereira_spi_slave dut (
-        .ui_in(8'b0),
-        .uo_out(8'b0),
-        .uio_in(uio),
-        .uio_out(uio),
+        .ui_in(),
+        .uo_out(),
+        .uio_in(uio_in),
+        .uio_out(uio_out),
         .uio_oe(), // Leave blank
         .ena(button[0]),
         .clk(clk),
         .rst_n(button[1])
-    )
+    );
 endmodule
