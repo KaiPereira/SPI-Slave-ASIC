@@ -30,6 +30,10 @@ make -B
 gtkwave tb.fst tb.gtkw
 ```
 
+## Programming Configuration
+
+I've also added all the necessary files to configure my ASIC design onto the Icepi Zero, the FPGA board I use. If you want to program a different board, replace the .lpf with your own FPGA's LPF, modify the top file for your device, and then just run `make`. 
+
 ## Inspiration
 
 This project uses the tinytapeout template which has all of the workflows to build your project and get it ready for manufacturing which I'll eventually do with some future projects!

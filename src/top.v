@@ -4,10 +4,10 @@ module top (
     input wire clk,
     input wire [1:0] button,
     input wire pi_mosi,
-    input wire pi_miso,
+    output wire pi_miso,
     input wire pi_sclk,
     input wire pi_ce0,
-    input wire [4:0] led
+    output wire [4:0] led
 );
 
     // Little LED clock to confirm the design is working
@@ -19,7 +19,7 @@ module top (
 
     always @(posedge clk) clk_count <= clk_count + 1'b1;
 
-    always @(posedge clk_count[24]) led <= led + 1'b1;
+    always @(posedge clk_count[24]) led <= led + 1;
 
 
     wire [7:0] uio_in;
