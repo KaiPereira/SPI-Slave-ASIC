@@ -67,13 +67,11 @@ module tt_um_kaipereira_spi_slave (
 
   always @(posedge clk, negedge rst_n) begin
     if (!rst_n) begin
-      count   <= 3'b0;
+      count <= 3'b0;
       tx_byte <= 8'b0;
       rx_byte <= 8'b0;
     end else if (cs_reg[1] || !reset) begin
-      count   <= 3'b0;
-      tx_byte <= 8'b0;
-      rx_byte <= 8'b0;
+      count <= 3'b0;
     end else begin
       if (rising_edge && !cs_reg[1]) begin
         // Shift MOSI into the byte buffer

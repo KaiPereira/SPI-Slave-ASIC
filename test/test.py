@@ -35,6 +35,8 @@ async def get_edge(dut, bit, rising: bool):
         prev_bit = current_bit;
 
 async def send_byte(dut, byte, period_ns):
+    dut.uio_in.value = int(dut.uio_in.value) & ~(1 << 0)
+
     for i in range(8):
         # Shift the bit and mask out everything except the last bit and send it in the right order
         bit = (byte >> (7 - i)) & 1;
@@ -59,6 +61,8 @@ async def send_byte(dut, byte, period_ns):
 
     await Timer(period_ns / 2, unit="ns")
     dut.uio_in.value = int(dut.uio_in.value) & ~(1 << 1)
+    
+    dut.uio_in.value = int(dut.uio_in.value) | (1 << 0)
 
 
 @cocotb.test()
@@ -78,7 +82,8 @@ async def test_project(dut):
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 10)
     dut.rst_n.value = 1
-    dut.uio_in.value = int(dut.uio_in.value) | (1 << 5); # Set the 5th bit high
+    dut.uio_in.value = int(dut.uio_in.value) | (1 << 5) # Set the 5th bit high
+    dut.uio_in.value = int(dut.uio_in.value) | (1 << 0)
 
     # Phase offset to simulate the serial clock delay from the master controller
     await Timer(67, units="ns")
@@ -88,11 +93,16 @@ async def test_project(dut):
     await ClockCycles(dut.clk, 10)
     cocotb.start_soon(send_byte(dut, 0xAB, sclk_ns))
 
+    await ClockCycles(dut.clk, 200)
+    cocotb.start_soon(send_byte(dut, 0xAB, sclk_ns))
+
+    await ClockCycles(dut.clk, 200)
+    cocotb.start_soon(send_byte(dut, 0xAB, sclk_ns))
 
     dut._log.info("Test project behavior")
 
     # Wait for many clock cycle to see the output values
-    await ClockCycles(dut.clk, 400)
+    await ClockCycles(dut.clk, 1000)
 
     # The following assersion is just an example of how to check the output values.
     # Change it to match the actual expected output of your module:
