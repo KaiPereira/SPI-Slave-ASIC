@@ -70,12 +70,12 @@ module tt_um_kaipereira_spi_slave (
       count   <= 3'b0;
       tx_byte <= 8'b0;
       rx_byte <= 8'b0;
-    end else if (cs_reg[1] || !reset) begin
+    end else if (!reset) begin
       count   <= 3'b0;
       tx_byte <= 8'b0;
       rx_byte <= 8'b0;
     end else begin
-      if (rising_edge && !cs_reg[1]) begin
+      if (rising_edge) begin
         // Shift MOSI into the byte buffer
         rx_byte <= {rx_byte[6:0], mosi_reg[1]};
 
@@ -84,7 +84,7 @@ module tt_um_kaipereira_spi_slave (
         if (count == 3'd7) begin
           count <= 3'b000;
         end
-      end else if (falling_edge && !cs_reg[1]) begin
+      end else if (falling_edge) begin
         // Wait for the whole byte to transfer
         // Then shift RX into TX
         if (count == 3'b000) begin
