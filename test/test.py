@@ -20,7 +20,7 @@ async def sclk_clock(dut, pin, cs_pin, period_ns):
             await Timer(period_ns / 2, unit="ns");
 
 async def get_edge(dut, bit, rising: bool):
-    prev_bit = (int(dut.uio_in) >> bit) & 1;
+    prev_bit = (int(dut.uio_in.value) >> bit) & 1;
 
     while True:
         # Wait for the value to change
@@ -86,6 +86,7 @@ async def test_project(dut):
     await ClockCycles(dut.clk, 10)
     dut.rst_n.value = 1
     dut.uio_in.value = int(dut.uio_in.value) | (1 << 5); # Set the 5th bit high
+    dut.uio_in.value = (1 << 0) | (1 << 5)
 
     # Phase offset to simulate the serial clock delay from the master controller
     await Timer(67, units="ns")
