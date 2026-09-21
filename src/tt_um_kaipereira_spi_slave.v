@@ -100,7 +100,7 @@ module tt_um_kaipereira_spi_slave (
   end
 
   // Send the current bit that's actively getting shifted
-  assign spi_miso = cs_reg[1] ? 1'b0 : tx_byte[7];
+  assign spi_miso = cs_reg[0] ? 1'b0 : tx_byte[7];
 
   // Pull floating outputs low
   assign uio_out[1:0] = 2'b0;
