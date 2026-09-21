@@ -39,34 +39,51 @@ async def get_edge(dut, bit, rising: bool):
         prev_bit = current_bit;
 
 async def send_byte(dut, byte, period_ns):
-    dut.uio_in.value = int(dut.uio_in.value) & ~(1 << 0)
+    first_bit = (byte >> 7) & 1;
+
+    # Send the first bit immediately with SCLK (in it's own function)
+    value = int(dut.uio_in.value)
+
+    if first_bit:
+        value |= (1 << 1)
+    else:
+        value &= ~(1 << 1)
+
+    dut.uio_in.value = value # Set the MOSI bit
+
+    # Put CS low
+    value &= ~(1 << 0)
+    dut.uio_in.value = value
 
     for i in range(8):
-        # Shift the bit and mask out everything except the last bit and send it in the right order
-        bit = (byte >> (7 - i)) & 1;
-
         # Wait for the rising edge of the serial clock
-        await get_edge(dut, 3, False)
-
-        # Add margin to the start of the signal
-        await Timer(period_ns / 4, unit="ns")
-        if bit:
-            # Push MOSI high if there's a bit
-            dut.uio_in.value = int(dut.uio_in.value) | (1 << 1)
-        else:
-            # Pull MOSI low if there isn't one
-            dut.uio_in.value = int(dut.uio_in.value) & ~(1 << 1)
-
-        # Wait for the falling edge and then set low again
         await get_edge(dut, 3, True)
 
-        # Add margin to the end of the signal
-        await Timer(period_ns / 4, unit="ns")
+        if i == 7:
+            break;
 
-    await Timer(period_ns / 2, unit="ns")
+        await get_edge(dut, 3, False)
 
-    dut.uio_in.value = (int(dut.uio_in.value) | (1 << 0)) & ~(1 << 1)
+        # Shift the bit and mask out everything except the last bit and send it in the right order (we've already shifted out the first bit)
+        bit = (byte >> (6 - i)) & 1
 
+        value = int(dut.uio_in.value)
+
+        if bit:
+            value |= (1 << 1)
+        else:
+            value &= ~(1 << 1)
+
+        dut.uio_in.value = value
+
+    # Wait for the falling edge of the last serial clock to set CS high, and MOSI low
+    await get_edge(dut, 3, False)
+
+    value = int(dut.uio_in.value)
+    value |= (1 << 0)
+    value &= ~(1 << 1)
+
+    dut.uio_in.value = value
 
 @cocotb.test()
 async def test_project(dut):
@@ -94,13 +111,13 @@ async def test_project(dut):
 
     # Start sending data from the master device after 10 clock cycles just to simulate something random
     await ClockCycles(dut.clk, 10)
-    cocotb.start_soon(send_byte(dut, 0xAB, sclk_ns))
+    cocotb.start_soon(send_byte(dut, 0xBB, sclk_ns))
 
     await ClockCycles(dut.clk, 300)
-    cocotb.start_soon(send_byte(dut, 0xAB, sclk_ns))
+    cocotb.start_soon(send_byte(dut, 0xBB, sclk_ns))
 
     await ClockCycles(dut.clk, 300)
-    cocotb.start_soon(send_byte(dut, 0xAB, sclk_ns))
+    cocotb.start_soon(send_byte(dut, 0xBB, sclk_ns))
 
     dut._log.info("Test project behavior")
 

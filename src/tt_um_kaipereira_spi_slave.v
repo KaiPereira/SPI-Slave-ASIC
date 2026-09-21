@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Kai Pereira
+ * Copyright (c) 2026 Kai Pereira
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -75,7 +75,7 @@ module tt_um_kaipereira_spi_slave (
       tx_byte <= 8'b0;
       rx_byte <= 8'b0;
     end else begin
-      if (rising_edge & !cs_reg[1]) begin
+      if (rising_edge & !cs_reg[0]) begin
         // Shift MOSI into the byte buffer
         rx_byte <= {rx_byte[6:0], mosi_reg[1]};
 
@@ -100,7 +100,7 @@ module tt_um_kaipereira_spi_slave (
   end
 
   // Send the current bit that's actively getting shifted
-  assign spi_miso = tx_byte[7];
+  assign spi_miso = cs_reg[1] ? 1'b0 : tx_byte[7];
 
   // Pull floating outputs low
   assign uio_out[1:0] = 2'b0;
