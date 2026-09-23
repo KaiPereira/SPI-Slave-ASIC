@@ -2,9 +2,13 @@
 
 # SPI Slave Device
 
+<img width="1920" height="958" alt="image" src="https://github.com/user-attachments/assets/422b6106-9c7d-4c79-8395-3b6606396dfd" />
+
 This is my custom SPI slave ASIC I've decided to make in order to learn how to make my own chip from start to end.
 
 It simply receives the MOSI signal from the master controller and then just re-sends it over MISO but it was surprisingly challenging for me to make because it's my first Verilog project, but it was so much fun!
+
+View the GDS visualizer [here](https://gds-viewer.tinytapeout.com/?pdk=ihp-sg13g2&model=https%3A%2F%2Fkaipereira.github.io%2FSPI-Slave-ASIC%2F%2Ftinytapeout.oas).
 
 ## How the slave works
 
