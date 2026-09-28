@@ -2,6 +2,8 @@
 
 # SPI Slave Device
 
+<img width="1060" height="795" alt="image 3" src="https://github.com/user-attachments/assets/72fa38dd-1fa2-4ee6-914f-2989521e6e37" />
+
 <img width="1920" height="958" alt="image" src="https://github.com/user-attachments/assets/422b6106-9c7d-4c79-8395-3b6606396dfd" />
 
 This is my custom SPI slave ASIC I've decided to make in order to learn how to make my own chip from start to end.
